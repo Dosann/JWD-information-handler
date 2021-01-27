@@ -1,2 +1,3 @@
 # JWD-task-information-handler
-by Epam
+----
+Epam Java Web Development 2020
