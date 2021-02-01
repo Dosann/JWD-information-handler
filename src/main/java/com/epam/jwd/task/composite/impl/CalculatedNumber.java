@@ -5,12 +5,12 @@ import main.java.com.epam.jwd.task.composite.Component;
 import java.util.Collections;
 import java.util.List;
 
-public class Letter implements Component {
+public class CalculatedNumber implements Component {
 
-    private final char value;
+    private final String number;
 
-    public Letter(char value) {
-        this.value = value;
+    public CalculatedNumber(String number) {
+        this.number = number;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Letter implements Component {
 
     @Override
     public List<Component> getComponents() {
-       return Collections.emptyList();
+        return Collections.emptyList();
     }
 
     @Override
@@ -35,6 +35,6 @@ public class Letter implements Component {
 
     @Override
     public String backToText() {
-        return String.valueOf(value);
+        return number;
     }
 }
