@@ -22,14 +22,12 @@ public class LexemeParser implements Handler {
     private static final String LEXEME_REGEXP = "[^\\s\t\n]+";
     private static final String DIGIT_REGEXP = "\\d";
     private static final String PUNCTUATION_REGEXP = "\\p{Punct}";
-//    private static final String WORD_REGEXP = "[A-Za-z]+-?[a-z]*";
 
     private final Handler expressionParser = ExpressionParser.getInstance();
     private final Handler wordParser = WordParser.getInstance();
 
     @Override
     public Component handleParsing(String text) {
-
         Pattern pattern = Pattern.compile(LEXEME_REGEXP);
         Matcher matcher = pattern.matcher(text);
         Component textComponent = new Composite();
@@ -45,7 +43,6 @@ public class LexemeParser implements Handler {
                    lexemeComponentOfExpression = expressionParser.handleParsing(lexeme);
                    textComponent.add(lexemeComponentOfExpression);
             } else {
-//                wordComponent = resolveWordParsing(textComponent, lexeme);
                 lexemeOfWordComponent = wordParser.handleParsing(lexeme);
                 textComponent.add(lexemeOfWordComponent);
                 resolvePunctuationParsing(textComponent, lexeme);
@@ -53,17 +50,6 @@ public class LexemeParser implements Handler {
         }
         return textComponent;
     }
-
-//    private Component resolveWordParsing(Component textComponent, String lexeme) {
-//        Pattern wordPattern = Pattern.compile(WORD_REGEXP);
-//        Matcher wordMatcher = wordPattern.matcher(lexeme);
-//        while(wordMatcher.find()) {
-//            String word = wordMatcher.group();
-//            Component wordComponent = wordParser.handleParsing(word);
-//            textComponent.add(wordComponent);
-//        }
-//        return textComponent;
-//    }
 
     private void resolvePunctuationParsing(Component textComponent, String lexeme) {
         Pattern punctuationPattern = Pattern.compile(PUNCTUATION_REGEXP);

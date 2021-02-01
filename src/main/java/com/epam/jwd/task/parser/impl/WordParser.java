@@ -48,4 +48,5 @@ public class WordParser implements Handler {
         }
         return textComponent;
     }
+
 }

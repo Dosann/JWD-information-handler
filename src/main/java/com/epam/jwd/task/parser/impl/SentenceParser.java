@@ -23,7 +23,6 @@ public class SentenceParser implements Handler {
 
     @Override
     public Component handleParsing(String text) {
-
         Pattern pattern = Pattern.compile(SENTENCE_REGEXP);
         Matcher matcher = pattern.matcher(text);
         Component textComponent = new Composite();
