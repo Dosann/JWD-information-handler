@@ -47,6 +47,4 @@ public class ParagraphParserTest {
         Assert.assertEquals(paragraph, ParagraphParser.getInstance().handleParsing(sample));
 
     }
-
-
 }

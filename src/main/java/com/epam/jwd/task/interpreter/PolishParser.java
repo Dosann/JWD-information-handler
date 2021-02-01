@@ -1,5 +1,9 @@
 package main.java.com.epam.jwd.task.interpreter;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -7,9 +11,13 @@ import java.util.Stack;
 public enum PolishParser {
     INSTANCE;
 
+    private static final Logger LOGGER = LogManager.getLogger(PolishParser.class);
+
     private final static String OPERATOR_REGEXP = "[~&^|/*\\-+]|([<>]){2}";
 
     public List<String> convertToReversePolishNotation(String expression) {
+        LOGGER.log(Level.INFO, "Converting math expression to reverse polish notation");
+
         List<String> rpnFormat = new ArrayList<>();
         Stack<String> operators = new Stack<>();
 
@@ -41,6 +49,8 @@ public enum PolishParser {
         while (!operators.empty()) {
             rpnFormat.add(operators.pop());
         }
+
+        LOGGER.log(Level.INFO, "Math expression has been converted into RPN");
         return rpnFormat;
     }
 
@@ -65,6 +75,8 @@ public enum PolishParser {
                 i++;
             }
         }
+
+        LOGGER.log(Level.INFO, "Split math expression by optional spaces added between operands and operators");
         return resultExpression.toString().split(" ");
     }
 
